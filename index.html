@@ -37,13 +37,26 @@
 	        </div>
         </div>
         
+        <!-- Veil Code -->
+        <div class="fixed veil">
+        	<div class="container">
+	        	<div class="row">
+		        	<div class="span12 text-center">
+			        	<h1>Veil Content goes here.</h1>
+		        	</div>
+	        	</div>
+        	</div>
+	        
+        </div>
+        
         <div id="container" class="container">
         	<div class="row">
-	        	<div class="span2">
-		        	Nav
+	        	<div class="span2 text-left">
+		        	Nav<br/>
+		        	<a id="two-col" href="#">Two Col</a>
 	        	</div>
 	        	<div class="span8">
-		        	<div id="masonary" class="row">
+		        	<div id="masonary" class="row masonary">
 				        <div class="photo span2" data-category="cat1"><img src="images/330-1.jpeg"/></div>
 				        <div class="photo span2" data-category="cat2"><img src="images/330.jpeg"/></div>
 						<div class="photo span2" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
@@ -55,7 +68,7 @@
 						<div class="photo span2" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
 					</div>
 	        	</div>
-	        	<div class="span2">
+	        	<div class="span2 text-right">
 		        	Other Nav
 	        	</div>
         	</div>
@@ -73,20 +86,30 @@
 		
 		
 		<script>
-		    $(function(){
-		
-		      var $container = $('#masonary');
+		    var $container = $('#masonary');
+		    function refreshIsotope(){
+				
 		    
-		      $container.imagesLoaded( function(){
-		        $container.isotope({
-		          itemSelector : '.photo',
-		          getSortData : {
-			          category : function ($elem){
-				          return $elem.attr('data-category');
+			      $container.imagesLoaded( function(){
+			        $container.isotope({
+			          itemSelector : '.photo',
+			          getSortData : {
+				          category : function ($elem){
+					          return $elem.attr('data-category');
+				          }
 			          }
-		          }
-		        });
-		      });
+			        });
+			      });    
+		    }
+		    
+		    $(function(){
+				$('#two-col').on('click', function(){
+					$('#masonary').addClass('two-col');
+					refreshIsotope();
+					
+				});
+			
+		      refreshIsotope();
 			  
   			  $('#options .btn').on('click', function(){
   				  value = $(this).attr('data-type');
