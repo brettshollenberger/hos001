@@ -48,12 +48,17 @@
     				<div class="photo span3" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
     				<div class="photo span3" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
     				<div class="photo span3" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
-			</div>
+          </div>
         </div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <nav id="page_nav" style="display: none; ">
+          <a href="pages/2.html"></a>
+        </nav>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
         <script src="js/jquery.isotope.min.js"></script>
+        <script src="js/jquery.infinitescroll.min.js"></script>
 		
 		
 		<script>
@@ -72,12 +77,26 @@
 		        });
 		      });
 			  
-			  $('#options .btn').on('click', function(){
-				  value = $(this).attr('data-type');
-				  $container.isotope( {sortBy: value} );
-			  });
+  			  $('#options .btn').on('click', function(){
+  				  value = $(this).attr('data-type');
+  				  $container.isotope( {sortBy: value} );
+  			  });
+      
+          $container.infinitescroll({
+            navSelector  : '#page_nav',    // selector for the paged navigation 
+            nextSelector : '#page_nav a',  // selector for the NEXT link (to page 2)
+            itemSelector : '.photo',     // selector for all items you'll retrieve
+            loading: {
+                finishedMsg: 'No more pages to load.',
+                img: 'http://i.imgur.com/qkKy8.gif'
+              }
+            },
+            // call Isotope as a callback
+            function( newElements ) {
+              $container.isotope( 'appended', $( newElements ) );
+            }
+          );
 			  
-		    
 		    });
 		  </script>
 
