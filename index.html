@@ -13,6 +13,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/isotope.css">
+        <link rel="stylesheet" href="css/override.css">
 
     </head>
     <body>
@@ -21,16 +22,33 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+        <div class="container">
+	        <div class="row">
+		        <div class="span12">
+			        <div class="btn-toolbar">
+					  <div id="options" class="btn-group">
+					    <a class="btn" data-type="original" href="#">Original Order</a>
+					    <a class="btn" data-type="name" href="#">Name</a>
+					    <a class="btn" data-type="category" href="#">Category</a>
+					    <a class="btn" data-type="random" href="#">Random</a>
+					  </div>
+					</div>
+				</div>
+	        </div>
+        </div>
+        
         <div id="container" class="container">
-	        <div class="photo span2"><img src="images/330-1.jpeg"/></div>
-	        <div class="photo span2"><img src="images/330.jpeg"/></div>
-			<div class="photo span4"><img src="images/330-1.jpeg"/></div>
-			<div class="photo span1"><img src="images/430.jpeg"/></div>
-			<div class="photo span3"><img src="images/600.jpeg"/></div>
-			<div class="photo span4"><img src="images/330.jpeg"/></div>
-			<div class="photo span6"><img src="images/600.jpeg"/></div>
-			<div class="photo span3"><img src="images/330-1.jpeg"/></div>
-			<div class="photo span4"><img src="images/330.jpeg"/></div>
+	        <div class="row">
+		        <div class="photo span3" data-category="cat1"><img src="images/330-1.jpeg"/></div>
+		        <div class="photo span3" data-category="cat2"><img src="images/330.jpeg"/></div>
+				<div class="photo span3" data-category="cat1"><img src="images/330-1.jpeg"/></div>
+				<div class="photo span3" data-category="cat3"><img src="images/430.jpeg"/></div>
+				<div class="photo span3" data-category="cat4"><img src="images/600.jpeg"/></div>
+				<div class="photo span3" data-category="cat3"><img src="images/330.jpeg"/></div>
+				<div class="photo span3" data-category="cat1"><img src="images/600.jpeg"/></div>
+				<div class="photo span3" data-category="cat2"><img src="images/330-1.jpeg"/></div>
+				<div class="photo span3" data-category="cat3"><img src="images/330.jpeg"/></div>
+			</div>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -45,10 +63,25 @@
 		    
 		      $container.imagesLoaded( function(){
 		        $container.isotope({
-		          itemSelector : '.photo'
+		          itemSelector : '.photo',
+		          getSortData : {
+			          category : function ($elem){
+				          return $elem.attr('data-category');
+			          }
+		          }
 		        });
 		      });
-		    
+			  
+			  $('#options .btn').on('click', function(){
+				  value = $(this).attr('data-type')
+				  /*
+				  var options = {};
+				  options[ 'category' ] = value;
+				  */
+				  $container.isotope( {sortBy: value} );
+				  
+			  });
+			  
 		    
 		    });
 		  </script>
