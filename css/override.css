@@ -1,1 +1,15 @@
-.container{max-width: 1200px; width: 100%;}
+
+
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+}	
+@media (max-width: 767px) {
+	.masonary{width: 300px;}
+}
+@media (max-width: 480px) {}
+@media (min-width: 1200px) {
+	.masonary{}
+
+}

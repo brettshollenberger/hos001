@@ -38,17 +38,28 @@
         </div>
         
         <div id="container" class="container">
-	        <div class="row">
-		        <div class="photo span3" data-category="cat1"><img src="images/330-1.jpeg"/></div>
-		        <div class="photo span3" data-category="cat2"><img src="images/330.jpeg"/></div>
-    				<div class="photo span3" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
-    				<div class="photo span3" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
-    				<div class="photo span3" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
-    				<div class="photo span3" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
-    				<div class="photo span3" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
-    				<div class="photo span3" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
-    				<div class="photo span3" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
-          </div>
+        	<div class="row">
+	        	<div class="span2">
+		        	Nav
+	        	</div>
+	        	<div class="span8">
+		        	<div id="masonary" class="row">
+				        <div class="photo span2" data-category="cat1"><img src="images/330-1.jpeg"/></div>
+				        <div class="photo span2" data-category="cat2"><img src="images/330.jpeg"/></div>
+						<div class="photo span2" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
+						<div class="photo span2" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
+						<div class="photo span2" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
+						<div class="photo span2" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
+						<div class="photo span2" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
+						<div class="photo span2" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
+						<div class="photo span2" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
+					</div>
+	        	</div>
+	        	<div class="span2">
+		        	Other Nav
+	        	</div>
+        	</div>
+	        
         </div>
 
         <nav id="page_nav" style="display: none; ">
@@ -64,7 +75,7 @@
 		<script>
 		    $(function(){
 		
-		      var $container = $('#container');
+		      var $container = $('#masonary');
 		    
 		      $container.imagesLoaded( function(){
 		        $container.isotope({
