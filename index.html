@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+		    <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/isotope.css">
         <link rel="stylesheet" href="css/override.css">
 
@@ -26,12 +26,12 @@
 	        <div class="row">
 		        <div class="span12">
 			        <div class="btn-toolbar">
-					  <div id="options" class="btn-group">
-					    <a class="btn" data-type="original" href="#">Original Order</a>
-					    <a class="btn" data-type="name" href="#">Name</a>
-					    <a class="btn" data-type="category" href="#">Category</a>
-					    <a class="btn" data-type="random" href="#">Random</a>
-					  </div>
+					  <ul id="options" class="option-set btn-group">
+					    <li class="btn" data-type="original">Original Order</li>
+					    <li class="btn" data-type="name">Name</li>
+					    <li class="btn" data-type="category">Category</li>
+					    <li class="btn" data-type="random">Random</li>
+					  </ul>
 					</div>
 				</div>
 	        </div>
@@ -41,17 +41,17 @@
 	        <div class="row">
 		        <div class="photo span3" data-category="cat1"><img src="images/330-1.jpeg"/></div>
 		        <div class="photo span3" data-category="cat2"><img src="images/330.jpeg"/></div>
-				<div class="photo span3" data-category="cat1"><img src="images/330-1.jpeg"/></div>
-				<div class="photo span3" data-category="cat3"><img src="images/430.jpeg"/></div>
-				<div class="photo span3" data-category="cat4"><img src="images/600.jpeg"/></div>
-				<div class="photo span3" data-category="cat3"><img src="images/330.jpeg"/></div>
-				<div class="photo span3" data-category="cat1"><img src="images/600.jpeg"/></div>
-				<div class="photo span3" data-category="cat2"><img src="images/330-1.jpeg"/></div>
-				<div class="photo span3" data-category="cat3"><img src="images/330.jpeg"/></div>
+    				<div class="photo span3" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
+    				<div class="photo span3" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
+    				<div class="photo span3" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
+    				<div class="photo span3" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
+    				<div class="photo span3" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
+    				<div class="photo span3" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
+    				<div class="photo span3" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
 			</div>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/jquery.isotope.min.js"></script>
 		
@@ -73,13 +73,8 @@
 		      });
 			  
 			  $('#options .btn').on('click', function(){
-				  value = $(this).attr('data-type')
-				  /*
-				  var options = {};
-				  options[ 'category' ] = value;
-				  */
+				  value = $(this).attr('data-type');
 				  $container.isotope( {sortBy: value} );
-				  
 			  });
 			  
 		    
