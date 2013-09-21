@@ -15,12 +15,29 @@ h1 {
 }
 
 h3 {
+  font-size: 16px;
   text-transform: uppercase;
+}
+
+.logo {
+  position: relative;
+  top: -10px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.logo em {
+  text-transform: lowercase;
+  font-family: 'IM Fell Double Pica', serif;
+  font-size: 14px;
+  position: relative;
+  top: -2px;
 }
 
 .logo-big {
   position: absolute;
-  top: 0;
+  top: 30px;
   left: 45%;
   width: 120px;
 }
@@ -32,7 +49,7 @@ h3 {
     position: relative;
     float: left;
     margin-left: -10000px;
-    top: 100px;
+    top: 70px;
 }
 
 .logo-big:after {
@@ -41,7 +58,7 @@ h3 {
     width: 10000px;
     position: relative;
     float: left;
-    margin-top: -32px;
+    margin-top: -62px;
     margin-left: 130px;
 }
 
@@ -75,7 +92,7 @@ h3 {
   margin-top: 100px;
   border-left: 2px solid black;
   border-right: 2px solid black;
-  padding: 25px 0 60px 0;
+  padding: 60px 0 26px 0;
 }
 
 .masonary .span2 { 
@@ -92,7 +109,7 @@ h3 {
 
 .veil {
   width: 100%; 
-  height: 80%; 
+  height: 90%; 
   background: rgba(255, 255, 255, 0.7); 
   z-index: 99;
 }
@@ -114,6 +131,21 @@ h3 {
 
 .two-col.masonary .span2 {
   width: 300px !important;
+}
+
+.credits-wrapper {
+  margin-top: 30px;
+}
+
+.bottom-dismiss-wrapper i {
+  color: #e73829;
+}
+
+.bottom-dismiss-wrapper {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  margin: auto;
 }
 
 @media (min-width: 768px) and (max-width: 979px) {

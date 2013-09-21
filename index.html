@@ -13,6 +13,8 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400italic' rel='stylesheet' type='text/css'>
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/isotope.css">
         <link rel="stylesheet" href="css/override.css">
@@ -55,6 +57,13 @@
                             <div  class="logo-small">
                                 <img src="images/keystone.png">
                             </div>
+                        </div>
+                        <div class="credits-wrapper">
+                            <h3>Another fine project from</h3>
+                            <span class="logo">The Heads <em>of</em> State</span>
+                        </div>
+                        <div class="bottom-dismiss-wrapper">
+                            <a href="#" id="dismiss-veil"><i class="icon-chevron-down"></i></a>
                         </div>
 		        	</div>
 	        	</div>
@@ -134,6 +143,10 @@
 
             $(window).bind('scroll',function(e){
                 parallaxScroll();
+            });
+
+            $('#dismiss-veil').on('click', function() {
+                $('.veil').slideUp("slow");
             });
  
             function parallaxScroll(){
