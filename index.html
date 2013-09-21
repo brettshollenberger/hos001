@@ -11,7 +11,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		    <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/isotope.css">
         <link rel="stylesheet" href="css/override.css">
 
@@ -42,7 +44,18 @@
         	<div class="container">
 	        	<div class="row">
 		        	<div class="span12 text-center">
-			        	<h1>Veil Content goes here.</h1>
+                        <div class="inner-wrapper">
+                            <div  class="logo-big">
+                                <img src="images/10yr.png">
+                            </div>
+    			        	<h1>Ten Years of Rectangles</h1>
+                            <p>
+                                Aerobic brewpub fermentation, ibu wit. Hops priming noble hops aroma hops lauter tun barrel? Trappist; hydrometer brewhouse scotch ale copper autolysis infusion krug? Black malt carboy conditioning wort chiller. Gravity malt brewing mead finishing hops mash. Pint glass degrees plato brewhouse, units of bitterness.
+                            </p>
+                            <div  class="logo-small">
+                                <img src="images/keystone.png">
+                            </div>
+                        </div>
 		        	</div>
 	        	</div>
         	</div>
@@ -66,6 +79,24 @@
 						<div class="photo span2" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
 						<div class="photo span2" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
 						<div class="photo span2" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2" data-category="cat1"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2" data-category="cat2"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
+                        <div class="photo span2" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
+                        <div class="photo span2" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
+                        <div class="photo span2" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2" data-category="cat1"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2" data-category="cat2"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
+                        <div class="photo span2" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
+                        <div class="photo span2" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
+                        <div class="photo span2" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
 					</div>
 	        	</div>
 	        	<div class="span2 text-right">
@@ -88,7 +119,6 @@
 		<script>
 		    var $container = $('#masonary');
 		    function refreshIsotope(){
-				
 		    
 			      $container.imagesLoaded( function(){
 			        $container.isotope({
@@ -101,37 +131,45 @@
 			        });
 			      });    
 		    }
+
+            $(window).bind('scroll',function(e){
+                parallaxScroll();
+            });
+ 
+            function parallaxScroll(){
+                var scrolled = $(window).scrollTop();
+                $('.veil').css('top',(0-(scrolled*4))+'px');
+            }
 		    
 		    $(function(){
 				$('#two-col').on('click', function(){
 					$('#masonary').addClass('two-col');
 					refreshIsotope();
-					
 				});
 			
-		      refreshIsotope();
+		        refreshIsotope();
 			  
-  			  $('#options .btn').on('click', function(){
-  				  value = $(this).attr('data-type');
-  				  $container.isotope( {sortBy: value} );
-  			  });
+  			    $('#options .btn').on('click', function(){
+  				    value = $(this).attr('data-type');
+  				    $container.isotope( {sortBy: value} );
+  			    });
       
-          $container.infinitescroll({
-            navSelector  : '#page_nav',    // selector for the paged navigation 
-            nextSelector : '#page_nav a',  // selector for the NEXT link (to page 2)
-            itemSelector : '.photo',     // selector for all items you'll retrieve
-            loading: {
-                finishedMsg: 'No more pages to load.',
-                img: 'http://i.imgur.com/qkKy8.gif'
-              }
-            },
-            // call Isotope as a callback
-            function( newElements ) {
-              $container.isotope( 'appended', $( newElements ) );
-            }
-          );
+                $container.infinitescroll({
+                    navSelector  : '#page_nav',    // selector for the paged navigation 
+                    nextSelector : '#page_nav a',  // selector for the NEXT link (to page 2)
+                    itemSelector : '.photo',     // selector for all items you'll retrieve
+                    loading: {
+                        finishedMsg: 'No more pages to load.',
+                        img: 'http://i.imgur.com/qkKy8.gif'
+                      }
+                    },
+                    // call Isotope as a callback
+                    function( newElements ) {
+                      $container.isotope( 'appended', $( newElements ) );
+                    }
+                  );
 			  
-		    });
+		        });
 		  </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
