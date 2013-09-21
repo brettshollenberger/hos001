@@ -43,23 +43,23 @@ h3 {
 }
 
 .logo-big:before {
-    content: " ";
-    border-top: 2px solid black;
-    width: 10000px;
-    position: relative;
-    float: left;
-    margin-left: -10000px;
-    top: 70px;
+  content: " ";
+  border-top: 2px solid black;
+  width: 10000px;
+  position: relative;
+  float: left;
+  margin-left: -10000px;
+  top: 70px;
 }
 
 .logo-big:after {
-    content: " ";
-    border-top: 2px solid black;
-    width: 10000px;
-    position: relative;
-    float: left;
-    margin-top: -62px;
-    margin-left: 130px;
+  content: " ";
+  border-top: 2px solid black;
+  width: 10000px;
+  position: relative;
+  float: left;
+  margin-top: -62px;
+  margin-left: 130px;
 }
 
 .logo-small {
@@ -116,10 +116,9 @@ h3 {
 
 .veil .span12 {
   margin: 100px auto;
-  /*padding: 25px;*/
+  margin-left: 25px;
+  text-align: center;
   padding-bottom: 60px;
- /* border-left: 1.75px solid black;
-  border-right: 1.75px solid black;*/
   position: relative;
   overflow: hidden;
 }
@@ -148,11 +147,79 @@ h3 {
   margin: auto;
 }
 
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 980px) and (max-width: 1199px) {
+  
+  .logo-big {
+    left: 45%;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 40px;
+    color: #e73829;
+  }
+
+  .bottom-dismiss-wrapper {
+    bottom: -5px;
+  }
+
+  .logo-small {
+    top: 300px;
+  }
+
+  .logo-small:before {
+    top: 26px;
+  }
+
+  .logo-small:after {
+    top: -25px;
+  }
 
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) and (max-width: 979px) {
+  
+  .logo-small {
+    top: 386px;
+  }
+
+  .logo-big {
+    left: 43.5%;
+  }
+
+  .bottom-dismiss-wrapper {
+    bottom: -55px;
+  }
+
+  .veil {
+    height: 95%; 
+  }
+
+}
+
+@media (min-width: 732px) and (max-width: 767px) {
+
+  .logo-big {
+    left: 43%;
+  }
+
+  .veil {
+    height: 100%; 
+  }
+
+  .veil .span12 {
+    width: 96%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .inner-wrapper {
+    padding: 60px 0 26px 0;
+  }
+
+  .logo-small {
+    top: 385px;
+  }
 	
   .span2 {
     width: 104px; 
@@ -167,7 +234,99 @@ h3 {
 
 }
 
-@media (max-width: 480px) {}
+@media (min-width: 611px) and (max-width: 731px) {
+
+  .logo-big {
+    left: 42.5%;
+  }
+
+  .veil .span12 {
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .veil {
+    height: 100%; 
+  }
+
+  .logo-small {
+    top: 317px;
+  }
+
+  .veil .span12 {
+    width: 96.5%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 475px) and (max-width: 610px) {
+
+  .logo-big {
+    left: 40.5%;
+  }
+
+  .veil .span12 {
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 60px;
+    line-height: 60px;
+  }
+
+  .veil h1 + p {
+    display:none;
+  }
+
+  .veil {
+    height: 100%; 
+  }
+
+  .logo-small {
+    top: 298px;
+  }
+
+  .veil .span12 {
+    width: 96.5%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 474px) {
+
+  .logo-big {
+    left: 38%;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .veil h1 + p {
+    display:none;
+  }
+
+  .veil {
+    height: 90%; 
+  }
+
+  .logo-small {
+    top: 258px;
+  }
+
+  .veil .span12 {
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
 
 @media (min-width: 1200px) {
 	.masonary{}
