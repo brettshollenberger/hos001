@@ -18,15 +18,17 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/isotope.css">
         <link rel="stylesheet" href="css/override.css">
-
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-        <div class="container">
+        <div id="tag" class="rectangle">
+            <a href="#"><img src="images/tag.png"></a>
+        </div>
+
+        <div class="container" style="display:none;">
 	        <div class="row">
 		        <div class="span12">
 			        <div class="btn-toolbar">
@@ -71,45 +73,54 @@
 	        
         </div>
         
-        <div id="container" class="container">
-        	<div class="row">
-	        	<div class="span2 text-left">
-		        	Nav<br/>
-		        	<a id="two-col" href="#">Two Col</a>
+        <div class="container" style="height: 100%; margin-top: 50px">
+        	<div class="row" style="height: 100%;">
+	        	<div class="span2 text-left" id="left-nav">
+                    <div class="inner-nav-wrapper">
+                        <a id="scroll-top" href="#"><img src="images/menu/i-up-chevron.png" class="menu-icon"></a><br>
+                        <a id="four-col" href="#"><img src="images/menu/i-four-up.png" class="menu-icon"></a><br>
+    		        	<a id="two-col" href="#"><img src="images/menu/i-two-up.png" class="menu-icon"></a><br>
+                        <a id="two-col" href="#"><img src="images/menu/i-dropper.png" class="menu-icon"></a>
+                    </div>
 	        	</div>
 	        	<div class="span8">
-		        	<div id="masonary" class="row masonary">
-				        <div class="photo span2" data-category="cat1"><img src="images/330-1.jpeg"/></div>
-				        <div class="photo span2" data-category="cat2"><img src="images/330.jpeg"/></div>
-						<div class="photo span2" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
-						<div class="photo span2" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
-						<div class="photo span2" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
-						<div class="photo span2" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
-						<div class="photo span2" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
-						<div class="photo span2" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
-						<div class="photo span2" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2" data-category="cat1"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2" data-category="cat2"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
-                        <div class="photo span2" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
-                        <div class="photo span2" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
-                        <div class="photo span2" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2" data-category="cat1"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2" data-category="cat2"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
-                        <div class="photo span2" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
-                        <div class="photo span2" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
-                        <div class="photo span2" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
+		        	<div id="masonry" class="row masonry four-col">
+				        <div class="photo span2 rectangle" data-category="cat1"><img src="images/330-1.jpeg"/></div>
+				        <div class="photo span2 rectangle" data-category="cat2"><img src="images/330.jpeg"/></div>
+						<div class="photo span2 rectangle" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
+						<div class="photo span2 rectangle" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
+						<div class="photo span2 rectangle" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
+						<div class="photo span2 rectangle" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
+						<div class="photo span2 rectangle" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
+						<div class="photo span2 rectangle" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
+						<div class="photo span2 rectangle" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat1"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat2"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat1"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat2"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
+                        <div class="photo span2 rectangle" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
 					</div>
 	        	</div>
-	        	<div class="span2 text-right">
-		        	Other Nav
+	        	<div class="span2 text-right" style="height: 100%" id="right-nav">
+		        	<div class="inner-nav-wrapper">
+                        <a id="scroll-top" href="#"><img src="images/menu/i-facebook.png" class="menu-icon" style="width: 9px"></a><br>
+                        <a id="four-col" href="#"><img src="images/menu/i-twitter.png" class="menu-icon"></a><br>
+                        <a id="two-col" href="#"><img src="images/menu/i-camera.png" class="menu-icon"></a><br>
+                        <a id="two-col" href="#"><img src="images/menu/i-keystone.png" class="menu-icon"></a>
+                    </div>
 	        	</div>
         	</div>
 	        
@@ -126,7 +137,7 @@
 		
 		
 		<script>
-		    var $container = $('#masonary');
+		    var $container = $('#masonry');
 		    function refreshIsotope(){
 		    
 			      $container.imagesLoaded( function(){
@@ -145,20 +156,39 @@
                 parallaxScroll();
             });
 
+            $(window).resize(function() {
+                $container.isotope('reLayout');
+            });
+
+            $('#scroll-top').on('click', function() {
+                $(window).scroll(0);
+            });
+
             $('#dismiss-veil').on('click', function() {
                 $('.veil').slideUp("slow");
+            });
+
+            $('#tag').on('click', function() {
+                $('.veil').slideDown("slow");
             });
  
             function parallaxScroll(){
                 var scrolled = $(window).scrollTop();
-                $('.veil').css('top',(0-(scrolled*4))+'px');
+                $('.veil').css('top',(0-(scrolled*15))+'px');
             }
 		    
 		    $(function(){
 				$('#two-col').on('click', function(){
-					$('#masonary').addClass('two-col');
+					$('#masonry').addClass('two-col');
+                    $('#masonry').removeClass('four-col');
 					refreshIsotope();
 				});
+
+                $('#four-col').on('click', function(){
+                    $('#masonry').addClass('four-col');
+                    $('#masonry').removeClass('two-col');
+                    refreshIsotope();
+                });
 			
 		        refreshIsotope();
 			  
