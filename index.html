@@ -44,7 +44,7 @@
         </div>
         
         <!-- Veil Code -->
-        <div class="fixed veil">
+        <div class="fixed veil" id="veil">
         	<div class="container">
 	        	<div class="row">
 		        	<div class="span12 text-center">
@@ -152,29 +152,63 @@
 			      });    
 		    }
 
-            $(window).bind('scroll',function(e){
-                parallaxScroll();
+            //binding to mousewheel for the scrolling functions
+            $(window).bind('mousewheel', function (e) {
+                var scrollTop = $(window).scrollTop();
+                
+                // variable to account for the user being already scrolled down - accounts for the 'fixed' positioning relationship.
+                var realTop = $('#veil').position().top - scrollTop;
+                
+                // make sure that moving the veil doesn't put it in an inappropriate location
+                if(realTop + e.originalEvent.wheelDeltaY*3 <= 0 && $('#veil').position().top < $('#veil').height())
+                {
+                    // move the veil, in parallax to the window (less than is scrolled)
+                    $('#veil').css('top', (realTop + e.originalEvent.wheelDeltaY*3) + 'px');  
+                }         
             });
 
             $(window).resize(function() {
                 $container.isotope('reLayout');
             });
 
-            $('#scroll-top').on('click', function() {
+            $('#scroll-top').on('click', function(e) {
+                e.preventDefault();
                 $(window).scroll(0);
             });
 
-            $('#dismiss-veil').on('click', function() {
-                $('.veil').slideUp("slow");
+            $('#dismiss-veil').on('click', function(e) {
+                e.preventDefault();
+                $('#veil').animate({'top': -$('#veil').height()});
+                //$('.veil').slideUp("slow");
             });
 
-            $('#tag').on('click', function() {
-                $('.veil').slideDown("slow");
+            $('#tag').on('click', function(e) {
+                
+                // prevent the default # anchor behavior
+                e.preventDefault();
+                
+                var veil = $('#veil');
+                
+                // Simple toggle switch 
+                if(veil.position().top < $(window).scrollTop()){
+                    
+                    //Show the veil
+                    $('#veil').animate({'top': 0});
+                
+                } else {
+                    
+                    // Hide the veil
+                    $('#veil').animate({'top': -$('#veil').height()});
+                
+                }
             });
+ 
  
             function parallaxScroll(){
                 var scrolled = $(window).scrollTop();
-                $('.veil').css('top',(0-(scrolled*15))+'px');
+                if($('.veil').position().top >= (0-(scrolled*15)) ){
+                    $('.veil').css('top',(0-(scrolled*15))+'px');
+                }
             }
 		    
 		    $(function(){
