@@ -44,7 +44,7 @@
         </div>
         
         <!-- Veil Code -->
-        <div class="fixed veil">
+        <div class="fixed veil" id="veil">
         	<div class="container">
 	        	<div class="row">
 		        	<div class="span12 text-center">
@@ -152,29 +152,49 @@
 			      });    
 		    }
 
-            $(window).bind('scroll',function(e){
-                parallaxScroll();
+            $(window).bind('mousewheel', function (e) {
+                var scrollTop = $(window).scrollTop();
+                //$(window).scrollTop(scrollTop - Math.round(e.originalEvent.wheelDeltaY));    
+                var realTop = $('#veil').position().top - scrollTop;
+                if(realTop + e.originalEvent.wheelDeltaY*3 <= 0 && $('#veil').position().top < $('#veil').height())
+                {
+                    $('#veil').css('top', (realTop + e.originalEvent.wheelDeltaY*3) + 'px');  
+                }         
             });
 
             $(window).resize(function() {
                 $container.isotope('reLayout');
             });
 
-            $('#scroll-top').on('click', function() {
+            $('#scroll-top').on('click', function(e) {
+                e.preventDefault();
                 $(window).scroll(0);
             });
 
-            $('#dismiss-veil').on('click', function() {
-                $('.veil').slideUp("slow");
+            $('#dismiss-veil').on('click', function(e) {
+                e.preventDefault();
+                $('#veil').animate({'top': -$('#veil').height()});
+                //$('.veil').slideUp("slow");
             });
 
-            $('#tag').on('click', function() {
-                $('.veil').slideDown("slow");
+            $('#tag').on('click', function(e) {
+                e.preventDefault();
+                var veil = $('#veil');
+                if(veil.position().top < $(window).scrollTop()){
+                    console.log('show veil');
+                    $('#veil').animate({'top': 0});
+                } else {
+                    console.log('hide veil');
+                    $('#veil').animate({'top': -$('#veil').height()});
+                }
             });
+ 
  
             function parallaxScroll(){
                 var scrolled = $(window).scrollTop();
-                $('.veil').css('top',(0-(scrolled*15))+'px');
+                if($('.veil').position().top >= (0-(scrolled*15)) ){
+                    $('.veil').css('top',(0-(scrolled*15))+'px');
+                }
             }
 		    
 		    $(function(){
