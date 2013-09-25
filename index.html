@@ -85,34 +85,8 @@
 	        	</div>
 	        	<div class="span8">
 		        	<div id="masonry" class="row masonry four-col">
-				        <div class="photo span2 rectangle" data-category="cat1"><img src="images/330-1.jpeg"/></div>
-				        <div class="photo span2 rectangle" data-category="cat2"><img src="images/330.jpeg"/></div>
-						<div class="photo span2 rectangle" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
-						<div class="photo span2 rectangle" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
-						<div class="photo span2 rectangle" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
-						<div class="photo span2 rectangle" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
-						<div class="photo span2 rectangle" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
-						<div class="photo span2 rectangle" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
-						<div class="photo span2 rectangle" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat1"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat2"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat1"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat2"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat1" name="mrow"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat3" name="meow"><img src="images/430.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat4" name="mittens"><img src="images/600.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat3" name="garfunkle"><img src="images/330.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat1" name="davis"><img src="images/600.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat2" name="simon"><img src="images/330-1.jpeg"/></div>
-                        <div class="photo span2 rectangle" data-category="cat3" name="norway"><img src="images/330.jpeg"/></div>
-					</div>
+		        						
+                    </div>
 	        	</div>
 	        	<div class="span2 text-right" style="height: 100%" id="right-nav">
 		        	<div class="inner-nav-wrapper">
@@ -138,6 +112,27 @@
 		
 		<script>
 		    var $container = $('#masonry');
+		    var veilVisible = true;
+		    var images = [];
+		    $.ajax({
+              type: "GET",
+              url: "http://hos001.s3.amazonaws.com/",
+              dataType: "xml",
+              success: function(data, status, xhr){
+                $(data).find('Key').each(function(){
+                   var item = $(this).text();
+                   var end = item.substring(item.length - 4);
+                   if(end == ".png"){
+                       images.push(item);
+                       $('#masonry').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+                   }
+                });
+                refreshIsotope();
+              }
+            });
+		    
+		    $('#tag').animate({'top':-$('#tag').height() - 10});
+		    
 		    function refreshIsotope(){
 		    
 			      $container.imagesLoaded( function(){
@@ -156,15 +151,23 @@
             $(window).bind('mousewheel', function (e) {
                 var scrollTop = $(window).scrollTop();
                 
-                // variable to account for the user being already scrolled down - accounts for the 'fixed' positioning relationship.
-                var realTop = $('#veil').position().top - scrollTop;
-                
-                // make sure that moving the veil doesn't put it in an inappropriate location
-                if(realTop + e.originalEvent.wheelDeltaY*3 <= 0 && $('#veil').position().top < $('#veil').height())
-                {
-                    // move the veil, in parallax to the window (less than is scrolled)
-                    $('#veil').css('top', (realTop + e.originalEvent.wheelDeltaY*3) + 'px');  
-                }         
+                if(veilVisible){
+                    
+                    // variable to account for the user being already scrolled down - accounts for the 'fixed' positioning relationship.
+                    var realTop = $('#veil').position().top - scrollTop;
+                    
+                    // make sure that moving the veil doesn't put it in an inappropriate location
+                    if((-scrollTop * 5) <= 0 && $('#veil').position().top < $('#veil').height())
+                    {
+                        // move the veil, in parallax to the window (less than is scrolled)
+                        $('#veil').css('top', (-scrollTop * 5) + 'px');  
+                    }
+                    if($('#veil').position().top < -$('#veil').height()){
+                        $('#tag').animate({'top':0});
+                        veilVisible= false;
+                        
+                    }
+                }      
             });
 
             $(window).resize(function() {
@@ -178,31 +181,35 @@
 
             $('#dismiss-veil').on('click', function(e) {
                 e.preventDefault();
-                $('#veil').animate({'top': -$('#veil').height()});
-                //$('.veil').slideUp("slow");
+                toggleVeilTag();
             });
 
             $('#tag').on('click', function(e) {
                 
                 // prevent the default # anchor behavior
                 e.preventDefault();
+                toggleVeilTag();
                 
+            });
+            
+            function toggleVeilTag(){
                 var veil = $('#veil');
                 
                 // Simple toggle switch 
-                if(veil.position().top < $(window).scrollTop()){
+                if(!veilVisible){
                     
                     //Show the veil
                     $('#veil').animate({'top': 0});
-                
+                    $('#tag').animate({'top':-$('#tag').height() - 10});
+                    veilVisible = true;
                 } else {
                     
                     // Hide the veil
                     $('#veil').animate({'top': -$('#veil').height()});
-                
+                    $('#tag').animate({'top':0});
+                    veilVisible = false;
                 }
-            });
- 
+            }
  
             function parallaxScroll(){
                 var scrolled = $(window).scrollTop();
@@ -224,7 +231,7 @@
                     refreshIsotope();
                 });
 			
-		        refreshIsotope();
+		        //refreshIsotope();
 			  
   			    $('#options .btn').on('click', function(){
   				    value = $(this).attr('data-type');
