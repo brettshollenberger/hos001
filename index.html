@@ -11,22 +11,281 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <link rel="stylesheet" href="css/main.css">
-
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400italic' rel='stylesheet' type='text/css'>
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/fonts/sssocial.css">
+        <link rel="stylesheet" href="css/fonts/ssstandard.css">
+        <link rel="stylesheet" href="css/transitions.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/isotope.css">
+        <link rel="stylesheet" href="css/override.css">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <a href="#" id="tag" class="rectangle"><img src="images/tag.png"></a>
+                </div>
+            </div>
+        </div>
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <div class="container" style="display:none;">
+	        <div class="row">
+		        <div class="span12">
+			        <div class="btn-toolbar">
+					  <ul id="options" class="option-set btn-group">
+					    <li class="btn" data-type="original">Original Order</li>
+					    <li class="btn" data-type="name">Name</li>
+					    <li class="btn" data-type="category">Category</li>
+					    <li class="btn" data-type="random">Random</li>
+					  </ul>
+					</div>
+				</div>
+	        </div>
+        </div>
+        
+        <!-- Veil Code -->
+        <div class="fixed veil" id="veil">
+        	<div class="container">
+	        	<div class="row">
+		        	<div class="span12 text-center">
+                        <div class="inner-wrapper">
+                            <div  class="logo-big">
+                                <img src="images/10yr.png">
+                            </div>
+    			        	<h1>Ten Years of Rectangles</h1>
+                            <p>
+                                Aerobic brewpub fermentation, ibu wit. Hops priming noble hops aroma hops lauter tun barrel? Trappist; hydrometer brewhouse scotch ale copper autolysis infusion krug? Black malt carboy conditioning wort chiller. Gravity malt brewing mead finishing hops mash. Pint glass degrees plato brewhouse, units of bitterness.
+                            </p>
+                            <div  class="logo-small">
+                                <img src="images/keystone.png">
+                            </div>
+                        </div>
+                        <div class="credits-wrapper">
+                            <h3>Another fine project from</h3>
+                            <span class="logo">The Heads <em>of</em> State</span>
+                        </div>
+                        <div class="bottom-dismiss-wrapper">
+                            <a href="#" id="dismiss-veil"><i class="icon-chevron-down"></i></a>
+                        </div>
+		        	</div>
+	        	</div>
+        	</div>
+	        
+        </div>
+        
+        <div class="container" style="height: 100%; margin-top: 50px; position: relative;">
+        	<div class="row">
+	        	<div class="span2 left-nav" id="left-nav">
+                    <div class="inner-nav-wrapper-left">
+                        <a id="scroll-top" class="ss-navigateup ss-icon"></a>
+                        <a id="four-col" class="ss-microsoft ss-icon ss-social-regular"></a>
+                        <a id="two-col" class="ss-pause ss-icon"></a>
+                        <a id="sample" class="ss-sample ss-icon"></a>
+                    </div>
+	        	</div>
+	        	<div class="span8">
+		        	<div id="masonry" class="row masonry four-col">
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+                    </div>
+	        	</div>
+	        	<div class="span2 right-nav" id="right-nav">
+		        	<div class="inner-nav-wrapper-right">
+                        <a class="ss-facebook ss-icon ss-social-regular" href="http://www.facebook.com/share.php?u=http://tenyearsofrectangles.com" target="_blank"></a>
+                        <a class="ss-twitter ss-icon ss-social-regular" href="https://twitter.com/intent/tweet?original_referer=http://tenyearsofrectangles.com&amp;url=http://tenyearsofrectangles.com&amp;source=tweetbutton"></a>
+                        <a class="ss-instagram ss-icon ss-social-regular"></a>
+                        <a class="hos-menu-icon" href="http://theheadsofstate.com/" target="_blank"></a>
+                    </div>
+	        	</div>
+        	</div>
+        </div>
+
+        <nav id="page_nav" style="display:none;">
+          <a href="2.html"></a>
+        </nav>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
         <script src="js/jquery.isotope.min.js"></script>
+        <script src="js/jquery.infinitescroll.min.js"></script>
+		<script src="js/fonts/ss-social.js"></script>
+		
+		<script>
+		    var $container = $('#masonry');
+		    var veilVisible = true;
+		    var images = [];
+		    $.ajax({
+              type: "GET",
+              url: "http://hos001.s3.amazonaws.com/",
+              dataType: "xml",
+              success: function(data, status, xhr){
+                $(data).find('Key').each(function(){
+                   var item = $(this).text();
+                   var end = item.substring(item.length - 4);
+                   if(end == ".png"){
+                       images.push(item);
+                       $('#masonry').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+                       $('#page_nav').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+                   }
+                });
+                refreshIsotope();
+              }
+            });
 
+		    
+		    $('#tag').animate({'top':-$('#tag').height() - 10});
+		    
+		    function refreshIsotope(){
+		      $container.imagesLoaded( function(){
+		        $container.isotope({
+		          itemSelector : '.photo',
+		          getSortData : {
+			          category : function ($elem){
+				          return $elem.attr('data-category');
+			          }
+		          }
+		        });
+		      });    
+		    }
+
+            //binding to mousewheel for the scrolling functions
+            $(window).bind('mousewheel', function (e) {
+                var scrollTop = $(window).scrollTop();
+                
+                if(veilVisible){
+                    
+                    // variable to account for the user being already scrolled down - accounts for the 'fixed' positioning relationship.
+                    var realTop = $('#veil').position().top - scrollTop;
+                    
+                    // make sure that moving the veil doesn't put it in an inappropriate location
+                    if((-scrollTop * 5) <= 0 && $('#veil').position().top < $('#veil').height())
+                    {
+                        // move the veil, in parallax to the window (less than is scrolled)
+                        $('#veil').css('top', (-scrollTop * 5) + 'px');  
+                    }
+                    if($('#veil').position().top < -$('#veil').height()){
+                        $('#tag').animate({'top':0});
+                        veilVisible= false;
+                        
+                    }
+                }      
+            });
+
+            $(window).resize(function() {
+                $container.isotope('reLayout');
+            });
+
+            $('#scroll-top').on('click', function(e) {
+                e.preventDefault();
+                $(window).scroll(0);
+            });
+
+            $('#dismiss-veil').on('click', function(e) {
+                e.preventDefault();
+                toggleVeilTag();
+            });
+
+            $('#tag').on('click', function(e) {
+                
+                // prevent the default # anchor behavior
+                e.preventDefault();
+                toggleVeilTag();
+                
+            });
+            
+            function toggleVeilTag(){
+                var veil = $('#veil');
+                
+                // Simple toggle switch 
+                if(!veilVisible){
+                    
+                    //Show the veil
+                    $('#veil').animate({'top': 0});
+                    $('#tag').animate({'top':-$('#tag').height() - 10});
+                    veilVisible = true;
+                } else {
+                    
+                    // Hide the veil
+                    $('#veil').animate({'top': -$('#veil').height()});
+                    $('#tag').animate({'top':0});
+                    veilVisible = false;
+                }
+            }
+ 
+            function parallaxScroll(){
+                var scrolled = $(window).scrollTop();
+                if($('.veil').position().top >= (0-(scrolled*15)) ){
+                    $('.veil').css('top',(0-(scrolled*15))+'px');
+                }
+            }
+		    
+		    $(function(){
+
+				$('#two-col').on('click', function(){
+                    $('#masonry').addClass('fadeOutUp animated');
+                    setTimeout(function () {
+                        $('#masonry').addClass('two-col');
+                        $('#masonry').removeClass('four-col');
+                        refreshIsotope();
+                    }, 800);
+                    setTimeout(function () {
+                        $('#masonry').removeClass('fadeOutUp');
+                        $('#masonry').removeClass('animated');
+                        $('#masonry').addClass('fadeInDown animated');
+                    }, 1500);
+				});
+
+                $('#four-col').on('click', function(){
+                    $('#masonry').addClass('fadeOutUp animated');
+                    setTimeout(function () {
+                        $('#masonry').removeClass('two-col');
+                        $('#masonry').addClass('four-col');
+                        refreshIsotope();
+                    }, 800);
+                    setTimeout(function () {
+                        $('#masonry').removeClass('fadeOutUp');
+                        $('#masonry').removeClass('animated');
+                        $('#masonry').addClass('fadeInDown animated');
+                    }, 1500);
+                });
+
+                $('#sample').on('click', function() {
+                    $('#masonry').removeClass('fadeOutUp');
+                    $('#masonry').removeClass('animated');
+                    $('#masonry').addClass('fadeInDown animated');
+                });
+			
+		        //refreshIsotope();
+			  
+  			    $('#options .btn').on('click', function(){
+  				    value = $(this).attr('data-type');
+  				    $container.isotope( {sortBy: value} );
+  			    });
+      
+                $container.infinitescroll({
+                    dataType: 'html',
+                    navSelector  : '#page_nav',    // selector for the paged navigation 
+                    nextSelector : '#page_nav a',  // selector for the NEXT link (to page 2)
+                    itemSelector : '.photo',     // selector for all items you'll retrieve
+                    loading: {
+                        finishedMsg: 'No more pages to load.',
+                        img: 'http://i.imgur.com/qkKy8.gif'
+                      }
+                    },
+                    // call Isotope as a callback
+                    function( newElements ) {
+                      $container.isotope( 'appended', $( newElements ) );
+                    }
+                  );
+			  
+		        });
+
+		  </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

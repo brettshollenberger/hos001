@@ -1,0 +1,9 @@
+{
+  "name": "ten-years-of-rectangles",
+  "description": "A fever dream of beauty and boxes",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "connect": "2.x"
+  }
+}
