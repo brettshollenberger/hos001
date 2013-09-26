@@ -15,6 +15,9 @@
         <link href='http://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400italic' rel='stylesheet' type='text/css'>
         <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/fonts/sssocial.css">
+        <link rel="stylesheet" href="css/fonts/ssstandard.css">
+        <link rel="stylesheet" href="css/transitions.css">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/isotope.css">
         <link rel="stylesheet" href="css/override.css">
@@ -23,9 +26,12 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        <div id="tag" class="rectangle">
-            <a href="#"><img src="images/tag.png"></a>
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <a href="#" id="tag" class="rectangle"><img src="images/tag.png"></a>
+                </div>
+            </div>
         </div>
 
         <div class="container" style="display:none;">
@@ -73,42 +79,41 @@
 	        
         </div>
         
-        <div class="container" style="height: 100%; margin-top: 50px">
-        	<div class="row" style="height: 100%;">
-	        	<div class="span2 text-left" id="left-nav">
-                    <div class="inner-nav-wrapper">
-                        <a id="scroll-top" href="#"><img src="images/menu/i-up-chevron.png" class="menu-icon"></a><br>
-                        <a id="four-col" href="#"><img src="images/menu/i-four-up.png" class="menu-icon"></a><br>
-    		        	<a id="two-col" href="#"><img src="images/menu/i-two-up.png" class="menu-icon"></a><br>
-                        <a id="two-col" href="#"><img src="images/menu/i-dropper.png" class="menu-icon"></a>
+        <div class="container" style="height: 100%; margin-top: 50px; position: relative;">
+        	<div class="row">
+	        	<div class="span2 left-nav" id="left-nav">
+                    <div class="inner-nav-wrapper-left">
+                        <a id="scroll-top" class="ss-navigateup ss-icon"></a>
+                        <a id="four-col" class="ss-microsoft ss-icon ss-social-regular"></a>
+                        <a id="two-col" class="ss-pause ss-icon"></a>
+                        <a id="sample" class="ss-sample ss-icon"></a>
                     </div>
 	        	</div>
 	        	<div class="span8">
 		        	<div id="masonry" class="row masonry four-col">
-		        						
+
                     </div>
 	        	</div>
-	        	<div class="span2 text-right" style="height: 100%" id="right-nav">
-		        	<div class="inner-nav-wrapper">
-                        <a id="scroll-top" href="#"><img src="images/menu/i-facebook.png" class="menu-icon" style="width: 9px"></a><br>
-                        <a id="four-col" href="#"><img src="images/menu/i-twitter.png" class="menu-icon"></a><br>
-                        <a id="two-col" href="#"><img src="images/menu/i-camera.png" class="menu-icon"></a><br>
-                        <a id="two-col" href="#"><img src="images/menu/i-keystone.png" class="menu-icon"></a>
+	        	<div class="span2 right-nav" id="right-nav">
+		        	<div class="inner-nav-wrapper-right">
+                        <a class="ss-facebook ss-icon ss-social-regular" href="http://www.facebook.com/share.php?u=http://tenyearsofrectangles.com" target="_blank"></a>
+                        <a class="ss-twitter ss-icon ss-social-regular" href="https://twitter.com/intent/tweet?original_referer=http://tenyearsofrectangles.com&amp;url=http://tenyearsofrectangles.com&amp;source=tweetbutton"></a>
+                        <a class="ss-instagram ss-icon ss-social-regular"></a>
+                        <a class="hos-menu-icon" href="http://theheadsofstate.com/" target="_blank"></a>
                     </div>
 	        	</div>
         	</div>
-	        
         </div>
 
-        <nav id="page_nav" style="display: none; ">
-          <a href="pages/2.html"></a>
+        <nav id="page_nav" style="display:none;">
+          <a href="2.html"></a>
         </nav>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
         <script src="js/jquery.isotope.min.js"></script>
         <script src="js/jquery.infinitescroll.min.js"></script>
-		
+		<script src="js/fonts/ss-social.js"></script>
 		
 		<script>
 		    var $container = $('#masonry');
@@ -125,26 +130,27 @@
                    if(end == ".png"){
                        images.push(item);
                        $('#masonry').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+                       $('#page_nav').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
                    }
                 });
                 refreshIsotope();
               }
             });
+
 		    
 		    $('#tag').animate({'top':-$('#tag').height() - 10});
 		    
 		    function refreshIsotope(){
-		    
-			      $container.imagesLoaded( function(){
-			        $container.isotope({
-			          itemSelector : '.photo',
-			          getSortData : {
-				          category : function ($elem){
-					          return $elem.attr('data-category');
-				          }
+		      $container.imagesLoaded( function(){
+		        $container.isotope({
+		          itemSelector : '.photo',
+		          getSortData : {
+			          category : function ($elem){
+				          return $elem.attr('data-category');
 			          }
-			        });
-			      });    
+		          }
+		        });
+		      });    
 		    }
 
             //binding to mousewheel for the scrolling functions
@@ -219,16 +225,39 @@
             }
 		    
 		    $(function(){
+
 				$('#two-col').on('click', function(){
-					$('#masonry').addClass('two-col');
-                    $('#masonry').removeClass('four-col');
-					refreshIsotope();
+                    $('#masonry').addClass('fadeOutUp animated');
+                    setTimeout(function () {
+                        $('#masonry').addClass('two-col');
+                        $('#masonry').removeClass('four-col');
+                        refreshIsotope();
+                    }, 800);
+                    setTimeout(function () {
+                        $('#masonry').removeClass('fadeOutUp');
+                        $('#masonry').removeClass('animated');
+                        $('#masonry').addClass('fadeInDown animated');
+                    }, 1500);
 				});
 
                 $('#four-col').on('click', function(){
-                    $('#masonry').addClass('four-col');
-                    $('#masonry').removeClass('two-col');
-                    refreshIsotope();
+                    $('#masonry').addClass('fadeOutUp animated');
+                    setTimeout(function () {
+                        $('#masonry').removeClass('two-col');
+                        $('#masonry').addClass('four-col');
+                        refreshIsotope();
+                    }, 800);
+                    setTimeout(function () {
+                        $('#masonry').removeClass('fadeOutUp');
+                        $('#masonry').removeClass('animated');
+                        $('#masonry').addClass('fadeInDown animated');
+                    }, 1500);
+                });
+
+                $('#sample').on('click', function() {
+                    $('#masonry').removeClass('fadeOutUp');
+                    $('#masonry').removeClass('animated');
+                    $('#masonry').addClass('fadeInDown animated');
                 });
 			
 		        //refreshIsotope();
@@ -239,6 +268,7 @@
   			    });
       
                 $container.infinitescroll({
+                    dataType: 'html',
                     navSelector  : '#page_nav',    // selector for the paged navigation 
                     nextSelector : '#page_nav a',  // selector for the NEXT link (to page 2)
                     itemSelector : '.photo',     // selector for all items you'll retrieve
@@ -254,6 +284,7 @@
                   );
 			  
 		        });
+
 		  </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
