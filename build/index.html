@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ten Years of Rectangles | Heads of State</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+Double+Pica:400italic' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- build:css app/styles/app.min.css -->
+    <link rel="stylesheet" href="app/styles/app.css">
+    <!-- endbuild -->
+
+    <!--[if lt IE 9]>
+      <script src="components/html5shiv-dist/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-app="app">
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <noscript>
+      Please enable Javascript to experience this site :)
+    </noscript>
+
+    <div ng-view></div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
+
+    <script src="../vendor/jquery.isotope.min.js"></script>
+    <script src="../vendor/jquery.infinitescroll.min.js"></script>
+    <script src="../vendor/fonts/ss-social.js"></script>
+
+    <!-- build:js app/scripts/all.min.js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/modernizr/modernizr.js"></script>
+
+    <script src="app/scripts/app.js"></script>
+    <script src="app/scripts/controllers/home.js"></script>
+    <script src="app/scripts/controllers/rectangle_controller.js"></script>
+    <script src="app/scripts/services/api.js"></script>
+    <script src="app/scripts/services/helper.js"></script>
+    <script src="app/scripts/services/isotope.js"></script>
+    <script src="app/scripts/app.templates.js"></script>
+    <!-- endbuild -->
+
+    <!-- Google Analytics -->
+    <script>
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  </body>
+</html>
+
+
