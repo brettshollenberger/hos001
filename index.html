@@ -136,7 +136,7 @@
             app.controller('RectangleController', [
                 '$scope',
                 function($scope) {
-                    var images = [];
+                    var images = [],
                     $.ajax({
                       type: "GET",
                       url: "http://hos001.s3.amazonaws.com/",
@@ -147,7 +147,7 @@
                            var end = item.substring(item.length - 4);
                            if(end == ".png"){
                                images.push(item);
-                               $('#masonry').append('<div class="photo span2 rectangle" data-category="cat1" id="'+item+'"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+                                $('#masonry').append('<div class="photo span2 rectangle" data-category="cat1" id="'+item+'"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
                                $('#page_nav').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
                            }
                         });
@@ -259,25 +259,32 @@
 
                         var unique = function(array) {
                             var unique = [];
-
                             array.forEach(function (value) {
                                 if (unique.indexOf(value) === -1) {
                                     unique.push(value);
                                 }
                             });
-
                             return unique;
                         }
 
                         $('.color-icon').on('click', function() {
                             var c = $(this).attr('data-color');
-                            
-                            var p = $('.photo').filter(function(){
-                                return isIn(this.id, img[c]);
+                            $container.isotope({
+                                filter: "[data-color="+c+"]"
                             });
+                            // array of filtered images
+                            // var p = $('.photo').filter(function(){
+                            //     return isIn(this.id, img[c]);
+                            // });
+                            
 
-                            $('.photo').remove();
-                            $('#masonry').append(p);
+                            // $('.photo').each(function(idx, item){
+                            //     if(!$.inArray(item.id, img[c])){
+                            //         $(item).css('display', 'none');
+                            //     }
+                            // });
+                            //$('.photo').remove();
+                            //$('#masonry').append(p);
                             $container.isotope('reLayout');
                         });
 

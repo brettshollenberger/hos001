@@ -1,0 +1,91 @@
+.veil {
+  position: fixed;
+  width: 100%; 
+  height: 90%; 
+  background: rgba(255, 255, 255, 0.8); 
+  z-index: 99;
+}
+
+.veil .span12 {
+  margin: 100px auto;
+  margin-left: 25px;
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.veil p {
+  width: 70%;
+  margin: auto;
+}
+
+.logo-big:before {
+  content: " ";
+  border-top: 2px solid black;
+  width: 10000px;
+  position: absolute;
+  float: left;
+  margin-left: -10000px;
+  top: 70px;
+}
+
+.logo-big:after {
+  content: " ";
+  border-top: 2px solid black;
+  width: 10000px;
+  position: absolute;
+  float: left;
+  left: 130px;
+  top: 70px;
+}
+
+.logo-small {
+  position: absolute;
+  top: 280px;
+  left: 48%;
+}
+
+.logo-small:before {
+  content: " ";
+  border-top: 2px solid black;
+  width: 10000px;
+  position: absolute;
+  float: left;
+  top: 28px;
+  margin-left: -10005px;
+}
+
+.logo-small:after {
+  content: " ";
+  border-bottom: 2px solid black;
+  width: 1000px;
+  position: absolute;
+  float: right;
+  top: 28px;
+  left: 55px;
+}
+
+.inner-wrapper {
+  margin-top: 100px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding: 60px 0 26px 0;
+}
+
+/* Another Fine Project by the Heads of State text */
+.credits-wrapper {
+  margin-top: 30px;
+}
+
+/* Dismiss button */
+.bottom-dismiss-wrapper i {
+  color: #e73829;
+}
+
+.bottom-dismiss-wrapper {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  margin: auto;
+}

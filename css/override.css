@@ -542,7 +542,7 @@ h3 {
   .uneditable-input[class*="span"],
   .row-fluid [class*="span"] {
     float: left;
-    width: 75%
+    width: 75%;
   }
 
   .photo {
