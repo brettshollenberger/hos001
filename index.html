@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="app"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,10 +87,21 @@
                         <a id="four-col" class="ss-microsoft ss-icon ss-social-regular"></a>
                         <a id="two-col" class="ss-pause ss-icon"></a>
                         <a id="sample" class="ss-sample ss-icon"></a>
+                        <a id="red" class="color-icon color-icon-red" data-color="red"></a>
+                        <a id="black" class="color-icon color-icon-black" data-color="black" href="#"></a>
+                        <a id="yellow" class="color-icon color-icon-yellow" data-color="yellow" href="#"></a>
+                        <a id="green" class="color-icon color-icon-green" data-color="green" href="#"></a>
+                        <a id="blue" class="color-icon color-icon-blue" data-color="blue" href="#"></a>
+                        <a id="orange" class="color-icon color-icon-orange" data-color="orange" href="#"></a>
+                        <a id="white" class="color-icon color-icon-white" data-color="white" href="#"></a>
+                        <a id="purple" class="color-icon color-icon-purple" data-color="purple" href="#"></a>
+                        <a id="pink" class="color-icon color-icon-pink" data-color="pink" href="#"></a>
+                        <a id="brown" class="color-icon color-icon-brown" data-color="brown" href="#"></a>
+                        <a id="grey" class="color-icon color-icon-grey" data-color="grey" href="#"></a>
                     </div>
 	        	</div>
 	        	<div class="span8">
-		        	<div id="masonry" class="row masonry four-col">
+		        	<div id="masonry" class="row masonry four-col" ng-controller="RectangleController">
 
                     </div>
 	        	</div>
@@ -114,29 +125,165 @@
         <script src="js/jquery.isotope.min.js"></script>
         <script src="js/jquery.infinitescroll.min.js"></script>
 		<script src="js/fonts/ss-social.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 		
 		<script>
 		    var $container = $('#masonry');
 		    var veilVisible = true;
-		    var images = [];
-		    $.ajax({
-              type: "GET",
-              url: "http://hos001.s3.amazonaws.com/",
-              dataType: "xml",
-              success: function(data, status, xhr){
-                $(data).find('Key').each(function(){
-                   var item = $(this).text();
-                   var end = item.substring(item.length - 4);
-                   if(end == ".png"){
-                       images.push(item);
-                       $('#masonry').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
-                       $('#page_nav').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
-                   }
-                });
-                refreshIsotope();
-              }
-            });
+		    
+            var app = angular.module('app', []);
 
+            app.controller('RectangleController', [
+                '$scope',
+                function($scope) {
+                    var images = [];
+                    $.ajax({
+                      type: "GET",
+                      url: "http://hos001.s3.amazonaws.com/",
+                      dataType: "xml",
+                      success: function(data, status, xhr){
+                        $(data).find('Key').each(function(){
+                           var item = $(this).text();
+                           var end = item.substring(item.length - 4);
+                           if(end == ".png"){
+                               images.push(item);
+                               $('#masonry').append('<div class="photo span2 rectangle" data-category="cat1" id="'+item+'"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+                               $('#page_nav').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+                           }
+                        });
+                    refreshIsotope();
+                    img = {
+                        red:    ["original/8_London_Guardian.png", 
+                                "original/McKinsey_africa_final.png",
+                                "original/aarp_dollargift.png",
+                                "original/altlantic_montly_final.png",
+                                "original/audubon_final_small.png",
+                                "original/bookreview_cicero.png",
+                                "original/dallas_rowers_final.png",
+                                "original/deliver_final_flat.png",
+                                "original/decisions_jan_final.png",
+                                "original/fastco_china_final.png",
+                                "original/globe_color_flat.png",
+                                "original/flag_texture.png",
+                                "original/nike-final.png",
+                                "original/nyt_crossbones_final.png",
+                                "original/nyt_innovate.png",
+                                "original/screws_flat.png"],
+                        black:  ["original/8_London_Guardian.png", 
+                                "original/Philly_bino2.png",
+                                "original/aarp_dollargift.png",
+                                "original/altlantic_montly_final.png",
+                                "original/cio_eyeblinds_final_flat.png",
+                                "original/audubon_final_small.png",
+                                "original/bookreview_cicero.png",
+                                "original/deliver_final_flat.png",
+                                "original/globesnake_final.png",
+                                "original/flag_texture.png",
+                                "original/fortune_map_final.png",
+                                "original/mensjournal_wheel_final.png",
+                                "original/men's_health_metrogrades_final.png",
+                                "original/nyt_crossbones_final.png",
+                                "original/nyt_bombsFinalflat.png",
+                                "original/nyt_hands.png",
+                                "original/oped_eagle_final_frame.png",
+                                "original/oped_cloud_flag_short_scan.png",
+                                "original/realsimple_tightrope_final.png",
+                                "original/realsimple_drown.png",
+                                "original/spinfinal.png",
+                                "original/zoetrope_final.png",
+                                "original/oped_shopping_cart.png"],
+                        yellow: ["original/McKinsey_africa_final.png",
+                                 "original/men's_health_metrogrades_final.png",
+                                 "original/nyt_innovate.png",
+                                 "original/spinfinal.png"],
+                        green:  ["original/McKinsey_africa_final.png",
+                                 "original/audubon_final_small.png",
+                                 "original/decisions_jan_final.png",
+                                 "original/flag_texture.png",
+                                 "original/nyt_crossbones_final.png",
+                                 "original/nyt_innovate.png",
+                                 "original/ptsd_helmetfinal.png",
+                                 "original/zoetrope_final.png"],
+                        orange: ["original/Philly_bino2.png",
+                                "original/mensjournal_wheel_final.png",
+                                "original/nyt_innovate.png"],
+                        blue:   ["original/Philly_bino2.png",
+                                 "original/cookie.png",
+                                 "original/dallas_rowers_final.png",
+                                 "original/decisions_jan_final.png",
+                                 "original/fastco_china_final.png",
+                                 "original/globesnake_final.png",
+                                 "original/flag_texture.png",
+                                 "original/menshealth_final2.png",
+                                 "original/nyt_innovate.png",
+                                 "original/ogilvy_magnolia_flat.png",
+                                 "original/realsimple_drown.png",
+                                 "original/screws_flat.png"],
+                        white:  ["original/aarp_dollargift.png",
+                                 "original/altlantic_montly_final.png",
+                                 "original/cio_eyeblinds_final_flat.png",
+                                 "original/dallas_rowers_final.png",
+                                 "original/globe_color_flat.png",
+                                 "original/fortune_map_final.png",
+                                 "original/mensjournal_wheel_final.png",
+                                 "original/menshealth_final2.png",
+                                 "original/nyt_bombsFinalflat.png",
+                                 "original/nyt_hands.png",
+                                 "original/oped_eagle_final_frame.png",
+                                 "original/oped_cloud_flag_short_scan.png",
+                                 "original/oped_ehrenreich_2A.png",
+                                 "original/ogilvy_magnolia_flat.png",
+                                 "original/realsimple_tightrope_final.png",
+                                 "original/screws_flat.png",
+                                 "original/oped_shopping_cart.png"],
+                        purple: ["original/cio_eyeblinds_final_flat.png",
+                                 "original/realsimple_tightrope_final.png"],
+                        pink:   ["original/cookie.png"],
+                        brown:  ["original/nike-final.png",
+                                 "original/ptsd_helmetfinal.png"],
+                        grey:   ["original/oped_cloud_flag_short_scan.png",
+                                 "original/oped_ehrenreich_2A.png",
+                                 "original/ogilvy_magnolia_flat.png",
+                                 "original/ptsd_helmetfinal.png"]
+                    }
+
+                        var isIn = function(val, array) {
+                            var inArray = false;
+                            array.forEach(function(item) {
+                                if (val == item) {
+                                    inArray = true;
+                                };
+                            });
+                            return inArray;
+                        };
+
+                        var unique = function(array) {
+                            var unique = [];
+
+                            array.forEach(function (value) {
+                                if (unique.indexOf(value) === -1) {
+                                    unique.push(value);
+                                }
+                            });
+
+                            return unique;
+                        }
+
+                        $('.color-icon').on('click', function() {
+                            var c = $(this).attr('data-color');
+                            
+                            var p = $('.photo').filter(function(){
+                                return isIn(this.id, img[c]);
+                            });
+
+                            $('.photo').remove();
+                            $('#masonry').append(p);
+                            $container.isotope('reLayout');
+                        });
+
+                      }
+                    });
+                }]);        
 		    
 		    $('#tag').animate({'top':-$('#tag').height() - 10});
 		    
@@ -254,10 +401,20 @@
                     }, 1500);
                 });
 
+                var removeItem = function(el, arr) {
+                    i = arr.indexOf(el);
+                    arr.forEach(function(e) {
+                        if (i != -1) {
+                            arr.splice(i, 1);
+                        }
+                    });
+                };
+
                 $('#sample').on('click', function() {
-                    $('#masonry').removeClass('fadeOutUp');
-                    $('#masonry').removeClass('animated');
-                    $('#masonry').addClass('fadeInDown animated');
+                    var switcher = ['none', 'block'];
+                    var current = $('.color-icon').css('display');
+                    removeItem(current, switcher);
+                    $('.color-icon').css('display', switcher[0]);
                 });
 			
 		        //refreshIsotope();
