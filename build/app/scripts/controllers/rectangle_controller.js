@@ -7,20 +7,25 @@ angular
     function($scope, Helper, Isotope) {
       var $container = $('#masonry');
       var veilVisible = true;
+      $('#tag').hide();
       $scope.images = [];
-
+      i = 0;
       $.ajax({
         type: "GET",
         url: "http://hos001.s3.amazonaws.com/",
         dataType: "xml",
         success: function(data, status, xhr) {
-          console.log('Success');
           $(data).find('Key').each(function() {
             var item = $(this).text();
             var end = item.substring(item.length - 4);
             if(end == ".png") {
+              i++;
               $scope.images.push(item);
-              $('#masonry').append('<div class="photo span2 rectangle" data-category="cat1" id="'+item+'"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+              if (i % 2 === 0) {
+                $('#masonry').append('<div class="photo span2 rectangle" data-color="red" data-category="cat1" id="'+item+'"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+              } else {
+                $('#masonry').append('<div class="photo span2 rectangle" data-color="yellow" data-category="cat1" id="'+item+'"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
+              }
               $('#page_nav').append('<div class="photo span2 rectangle" data-category="cat1"><img src="http://hos001.s3.amazonaws.com/'+item+'"/></div>');
               refreshIsotope();
             }
@@ -28,18 +33,11 @@ angular
         }
       });
 
-      // $scope.$watch('images.length', function(newvalue, oldvalue) {
-      //   console.log('Images changed');
-      //   refreshIsotope();
-      // });
-
       $('.color-icon').on('click', function() {
         var c = $(this).attr('data-color');
         $container.isotope({
             filter: "[data-color="+c+"]"
         });
-                          
-        $container.isotope('reLayout');
       });
 
       $('#tag').animate({'top':-$('#tag').height() - 10});
@@ -54,25 +52,22 @@ angular
 
       //binding to mousewheel for the scrolling functions
       $(window).bind('mousewheel', function (e) {
-          var scrollTop = $(window).scrollTop();
+        var scrollTop = $(window).scrollTop();
           
-          if(veilVisible){
+        if(veilVisible){
+          // variable to account for the user being already scrolled down - accounts for the 'fixed' positioning relationship.
+          var realTop = $('#veil').position().top - scrollTop;
               
-              // variable to account for the user being already scrolled down - accounts for the 'fixed' positioning relationship.
-              var realTop = $('#veil').position().top - scrollTop;
-              
-              // make sure that moving the veil doesn't put it in an inappropriate location
-              if((-scrollTop * 5) <= 0 && $('#veil').position().top < $('#veil').height())
-              {
-                  // move the veil, in parallax to the window (less than is scrolled)
-                  $('#veil').css('top', (-scrollTop * 5) + 'px');
-              }
-              if($('#veil').position().top < -$('#veil').height()){
-                  $('#tag').animate({'top':0});
-                  veilVisible= false;
-                  
-              }
+          // make sure that moving the veil doesn't put it in an inappropriate location
+          if((-scrollTop * 5) <= 0 && $('#veil').position().top < $('#veil').height()) {
+            // move the veil, in parallax to the window (less than is scrolled)
+            $('#veil').css('top', (-scrollTop * 5) + 'px');
           }
+          if($('#veil').position().top < -$('#veil').height()) {
+            $('#tag').animate({'top':0});
+            veilVisible = false;
+          }
+        }
       });
 
       $(window).resize(function() {
@@ -96,20 +91,21 @@ angular
       });
 
       function toggleVeilTag(){
+        console.log("called");
         var veil = $('#veil');
+        var tag  = $('#tag');
         
         // Simple toggle switch 
         if(!veilVisible){
-            
             //Show the veil
-            $('#veil').animate({'top': 0});
-            $('#tag').animate({'top':-$('#tag').height() - 10});
+            veil.animate({'top': 0});
+            tag.animate({'top':-$('#tag').height() - 10});
             veilVisible = true;
         } else {
-            
             // Hide the veil
-            $('#veil').animate({'top': -$('#veil').height()});
-            $('#tag').animate({'top':0});
+            veil.animate({'top': -$('#veil').height()});
+            tag.show();
+            tag.animate({'top': 0});
             veilVisible = false;
         }
       }
