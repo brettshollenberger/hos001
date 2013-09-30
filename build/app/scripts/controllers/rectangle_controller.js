@@ -71,6 +71,26 @@ angular
         }
       });
 
+      $(window).bind('touchmove', function (e) {
+        var scrollTop = $(window).scrollTop();
+          
+        if(veilVisible){
+          // variable to account for the user being already scrolled down - 
+          // accounts for the 'fixed' positioning relationship.
+          var realTop = $('#veil').position().top - scrollTop;
+              
+          // make sure that moving the veil doesn't put it in an inappropriate location
+          if((-scrollTop * 5) <= 0 && $('#veil').position().top < $('#veil').height()) {
+            // move the veil, in parallax to the window (less than is scrolled)
+            $('#veil').css('top', (-scrollTop * 5) + 'px');
+          }
+          if($('#veil').position().top < -$('#veil').height()) {
+            $('#tag').animate({'top':0});
+            toggleVeilTag();
+          }
+        }
+      });
+
       $(window).resize(function() {
         $container.isotope('reLayout');
       });
@@ -92,7 +112,6 @@ angular
       });
 
       function toggleVeilTag(){
-        console.log("called");
         var veil = $('#veil');
         var tag  = $('#tag');
         

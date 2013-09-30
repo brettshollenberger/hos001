@@ -6513,7 +6513,6 @@ body {
 }
 .inner-nav-wrapper-right {
   width: 14%;
-  margin-left: 5px;
 }
 .menu-icon {
   width: 15px;
@@ -6754,6 +6753,9 @@ body {
 /**
  * Media Queries
  */
+@media (min-width: 1199px) and (max-width: 1272px) {
+  
+}
 @media (min-width: 980px) and (max-width: 1199px) {
   .logo-big {
     left: 45%;
@@ -6921,9 +6923,9 @@ body {
     margin-bottom: 15px;
   }
 }
-@media (max-width: 474px) {
+@media (min-width: 321px) and (max-width: 474px) {
   .logo-big {
-    left: 38%;
+    left: 37%;
   }
   h1 {
     font-size: 40px;
@@ -6989,6 +6991,74 @@ body {
   .ss-microsoft,
   .ss-pause {
     display: none;
+  }
+}
+@media (max-width: 320px) {
+  .veil .span12 {
+    margin: 10px auto;
+  }
+  .logo-big {
+    width: 70px;
+    left: 36%;
+  }
+  .logo-big:before,
+  .logo-big:after {
+    top: 45px;
+  }
+  .logo-big:after {
+    left: 80px;
+  }
+  .inner-wrapper {
+    margin-top: 75px;
+    padding-top: 30px;
+  }
+  .logo-small {
+    left: 41%;
+    top: 172px !important;
+  }
+  h1 {
+    font-size: 25px;
+    line-height: 25px;
+  }
+  .logo {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  h3 {
+    font-size: 12px;
+    line-height: 12px;
+  }
+  .veil h1 + p {
+    display: none;
+  }
+  .veil {
+    height: 100%;
+  }
+  .logo-small {
+    top: 258px;
+  }
+  .veil .span12 {
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .right-nav {
+    position: fixed;
+    left: 13px;
+    top: 400px;
+  }
+  .row-fluid .span8 {
+    width: 65% !important;
+    margin-left: 70px !important;
+    margin-top: -230px;
+  }
+  .two-col.masonry .span2 {
+    width: 100% !important;
+  }
+  .four-col.masonry .span2 {
+    width: 100% !important;
+    margin-left: 1%;
+    margin-bottom: 15px;
   }
 }
 /**

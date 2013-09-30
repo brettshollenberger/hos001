@@ -37,7 +37,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "          <p>\n" +
     "              Aerobic brewpub fermentation, ibu wit. Hops priming noble hops aroma hops lauter tun barrel? Trappist; hydrometer brewhouse scotch ale copper autolysis infusion krug? Black malt carboy conditioning wort chiller. Gravity malt brewing mead finishing hops mash. Pint glass degrees plato brewhouse, units of bitterness.\n" +
     "          </p>\n" +
-    "          <div  class=\"logo-small\">\n" +
+    "          <div class=\"logo-small\">\n" +
     "              <img src=\"app/images/keystone.png\">\n" +
     "          </div>\n" +
     "        </div>\n" +
@@ -62,16 +62,16 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "        <a id=\"two-col\" class=\"ss-pause ss-icon\"></a>\n" +
     "        <a id=\"sample\" class=\"ss-sample ss-icon\"></a>\n" +
     "        <a id=\"red\" class=\"color-icon color-icon-red\" data-color=\"red\"></a>\n" +
-    "        <a id=\"black\" class=\"color-icon color-icon-black\" data-color=\"black\" href=\"#\"></a>\n" +
-    "        <a id=\"yellow\" class=\"color-icon color-icon-yellow\" data-color=\"yellow\" href=\"#\"></a>\n" +
-    "        <a id=\"green\" class=\"color-icon color-icon-green\" data-color=\"green\" href=\"#\"></a>\n" +
-    "        <a id=\"blue\" class=\"color-icon color-icon-blue\" data-color=\"blue\" href=\"#\"></a>\n" +
-    "        <a id=\"orange\" class=\"color-icon color-icon-orange\" data-color=\"orange\" href=\"#\"></a>\n" +
-    "        <a id=\"white\" class=\"color-icon color-icon-white\" data-color=\"white\" href=\"#\"></a>\n" +
-    "        <a id=\"purple\" class=\"color-icon color-icon-purple\" data-color=\"purple\" href=\"#\"></a>\n" +
-    "        <a id=\"pink\" class=\"color-icon color-icon-pink\" data-color=\"pink\" href=\"#\"></a>\n" +
-    "        <a id=\"brown\" class=\"color-icon color-icon-brown\" data-color=\"brown\" href=\"#\"></a>\n" +
-    "        <a id=\"grey\" class=\"color-icon color-icon-grey\" data-color=\"grey\" href=\"#\"></a>\n" +
+    "        <a id=\"black\" class=\"color-icon color-icon-black\" data-color=\"black\"></a>\n" +
+    "        <a id=\"yellow\" class=\"color-icon color-icon-yellow\" data-color=\"yellow\"></a>\n" +
+    "        <a id=\"green\" class=\"color-icon color-icon-green\" data-color=\"green\"></a>\n" +
+    "        <a id=\"blue\" class=\"color-icon color-icon-blue\" data-color=\"blue\"></a>\n" +
+    "        <a id=\"orange\" class=\"color-icon color-icon-orange\" data-color=\"orange\"></a>\n" +
+    "        <a id=\"white\" class=\"color-icon color-icon-white\" data-color=\"white\"></a>\n" +
+    "        <a id=\"purple\" class=\"color-icon color-icon-purple\" data-color=\"purple\"></a>\n" +
+    "        <a id=\"pink\" class=\"color-icon color-icon-pink\" data-color=\"pink\"></a>\n" +
+    "        <a id=\"brown\" class=\"color-icon color-icon-brown\" data-color=\"brown\"></a>\n" +
+    "        <a id=\"grey\" class=\"color-icon color-icon-grey\" data-color=\"grey\"></a>\n" +
     "      </div>\n" +
     "    </div>\n" +
     "    <div class=\"span8\" ng-controller=\"RectangleController\">\n" +
@@ -92,11 +92,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "\n" +
     "<nav id=\"page_nav\" style=\"display:none;\">\n" +
     "  <a href=\"../pages/2.html\"></a>\n" +
-    "</nav>\n" +
-    "\n" +
-    "<script>\n" +
-    "\n" +
-    "</script>\n"
+    "</nav>\n"
   );
 
   $templateCache.put("app/test/e2e/runner.html",
