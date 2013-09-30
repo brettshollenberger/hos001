@@ -55,7 +55,8 @@ angular
         var scrollTop = $(window).scrollTop();
           
         if(veilVisible){
-          // variable to account for the user being already scrolled down - accounts for the 'fixed' positioning relationship.
+          // variable to account for the user being already scrolled down - 
+          // accounts for the 'fixed' positioning relationship.
           var realTop = $('#veil').position().top - scrollTop;
               
           // make sure that moving the veil doesn't put it in an inappropriate location
@@ -65,7 +66,7 @@ angular
           }
           if($('#veil').position().top < -$('#veil').height()) {
             $('#tag').animate({'top':0});
-            veilVisible = false;
+            toggleVeilTag();
           }
         }
       });
